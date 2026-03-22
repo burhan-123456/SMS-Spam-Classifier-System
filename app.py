@@ -5,6 +5,19 @@ from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 import nltk
 
+
+# ✅ Add this here
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+    nltk.download('punkt')
+    nltk.download('punkt_tab')
+
+try:
+    nltk.data.find('corpora/stopwords')
+except LookupError:
+    nltk.download('stopwords')
+
 # Load models
 tfidf = pickle.load(open('vectorizer.pkl', 'rb'))
 model = pickle.load(open('model.pkl','rb'))
